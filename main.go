@@ -101,6 +101,7 @@ func sendNotice(users, msgType, content string) (string, error) {
 func noticeCaptchaServe(w http.ResponseWriter, req *http.Request) {
 	log.Printf("%s %s %s", req.RemoteAddr, req.Method, req.URL)
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Cache-Control", "no-cache")
 	if req.Header.Get("Token") != "k1nG2QY9ef" {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte(`{"message": "token is invalid"}`))
