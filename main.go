@@ -54,6 +54,7 @@ func getToken() string {
 	now := int32(time.Now().Unix())
 	tokenInfo.value = token
 	tokenInfo.expired = now + (int32(expires) * 1000) - (5 * 60 * 1000)
+	log.Printf("get token success, expired:%d", tokenInfo.expired)
 	return token
 }
 
@@ -124,6 +125,7 @@ func noticeCaptchaServe(w http.ResponseWriter, req *http.Request) {
 	}
 	resStr := strings.Replace(`{"invalidUsers": "${1}"}`, "${1}", invalidUsers, 1)
 	w.Write([]byte(resStr))
+	log.Printf("send notice to %s success", users)
 }
 
 func pingServe(w http.ResponseWriter, req *http.Request) {
@@ -131,6 +133,7 @@ func pingServe(w http.ResponseWriter, req *http.Request) {
 }
 
 func main() {
+	_ = getToken()
 	http.HandleFunc("/ping", pingServe)
 	http.HandleFunc("/notice", noticeCaptchaServe)
 	log.Println("server is at :3011")
