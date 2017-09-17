@@ -4,14 +4,11 @@
 
 ## docker
 
-```bash
-docker build -t wechat-enterprise .
-```
 
 ```bash
 docker run -d --restart=always \
   -e PID=xx \
   -e SECRET=xx \
   -e AGENT=xxx \
-  --name=eagle actp-notice
+  --name=lightning wechat-enterprise 
 ```
