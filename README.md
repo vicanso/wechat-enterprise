@@ -10,5 +10,6 @@ docker run -d --restart=always \
   -e PID=xx \
   -e SECRET=xx \
   -e AGENT=xxx \
+  -e ACCESS_TOKEN=xxx \
   --name=lightning wechat-enterprise 
 ```

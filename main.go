@@ -21,6 +21,7 @@ var PID = os.Getenv("PID")
 var SECRET = os.Getenv("SECRET")
 var AGENT = os.Getenv("AGENT")
 var tokenInfo = Token{}
+var ACCESS_TOKEN = os.Getenv("ACCESS_TOKEN")
 
 func getToken() string {
 	if len(tokenInfo.value) != 0 && tokenInfo.expired > int32(time.Now().Unix()) {
@@ -102,7 +103,7 @@ func noticeCaptchaServe(w http.ResponseWriter, req *http.Request) {
 	log.Printf("%s %s %s", req.RemoteAddr, req.Method, req.URL)
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Cache-Control", "no-cache")
-	if req.Header.Get("Token") != "k1nG2QY9ef" {
+	if req.Header.Get("Token") != ACCESS_TOKEN {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte(`{"message": "token is invalid"}`))
 		return
