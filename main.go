@@ -54,7 +54,7 @@ func getToken() string {
 	}
 	now := int32(time.Now().Unix())
 	tokenInfo.value = token
-	tokenInfo.expired = now + (int32(expires) * 1000) - (5 * 60 * 1000)
+	tokenInfo.expired = now + (int32(expires)) - (5 * 60)
 	log.Printf("get token success, expired:%d", tokenInfo.expired)
 	return token
 }
