@@ -1,0 +1,14 @@
+port: :8011
+corp:
+  # 应用id
+  id: 企业应用的ID 
+  # 应用secret
+  secret: 创建企业应用是的密钥
+  # 应用agent id
+  agentID: 1000002
+  getToken: https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=%s&corpsecret=%s
+  sendMessage: https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=%s
+# 超时间隔
+timeout: 10s
+# 接口校验token（内部接口验证，使用随机串生成）
+token: X9oCTGkoZ8esEOBu1tLV
