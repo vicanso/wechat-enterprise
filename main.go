@@ -202,7 +202,6 @@ func notice(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 			"content": params.Content,
 		},
 	}
-	fmt.Println(data)
 	url := fmt.Sprintf(sendMessageURL, token)
 	c := getHTTPClient()
 
@@ -219,7 +218,6 @@ func notice(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		resBadRequest(w, err)
 		return
 	}
-	fmt.Println(string(body))
 	sendMsgRes := SendMessageRes{}
 	err = json.Unmarshal(body, &sendMsgRes)
 	if err != nil {
@@ -245,5 +243,6 @@ func main() {
 	router.GET("/ping", ping)
 	router.POST("/notice", notice)
 
+	logger.Info("the server will listen on " + port)
 	log.Fatal(http.ListenAndServe(port, router))
 }

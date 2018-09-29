@@ -31,6 +31,7 @@ docker build -t vicanso/wechat-enterprise .
 docker run -d --restart=always \
   -e GO_ENV=production \
   -e CONFIG=/configs \
+  -p 8011:8011 \
   -v ~/wechat-enterprise/production.yml:/configs/production.yml \
   --name notice vicanso/wechat-enterprise
 ```
